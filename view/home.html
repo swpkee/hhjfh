@@ -1,0 +1,44 @@
+<ons-page id="home1">
+    <ons-navigator swipeable id="myNavigator" page="page1.html"></ons-navigator>
+    <template id="page1.html">
+        <ons-page id="home">
+        <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
+
+            <ons-carousel-item id="movie1" style=" background: url(/image/1.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;">
+            </ons-carousel-item>
+
+            <ons-carousel-item id = "movie2" style="background: url(/image/2.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;">
+            </ons-carousel-item>
+
+            <ons-carousel-item id = "movie3" style="background: url(/image/3.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;">
+            </ons-carousel-item>
+
+        </ons-carousel>
+        <br>
+        <div class="font1">Top 10 of August</div>
+        <div class="movie_list">
+            <ons-carousel auto-refresh swipeable overscrollable item-width="150px">
+              <ons-carousel-item >
+                <img src="/image/5.jpg">
+              </ons-carousel-item>
+              <ons-carousel-item >
+                <img src="/image/6.jpg">
+              </ons-carousel-item>
+              <ons-carousel-item >
+                <img src="/image/7.jpg">
+              </ons-carousel-item>
+              <ons-carousel-item >
+                <img src="/image/8.jpg">
+              </ons-carousel-item>
+            </ons-carousel>
+          </div>
+
+        </ons-page>
+    </template>
+</ons-page>

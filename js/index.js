@@ -23,13 +23,7 @@ var firebaseConfig = {
       window.location.href = "signin.html";    
     }
   });
-  $("#signout").click(function(){
-    firebase.auth().signOut().then(function() {
-        // Sign-out successful.
-      }).catch(function(error) {
-        // An error happened.
-      });
-  })
+
   db.collection("movies").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         var row = `<h3>${doc.data().title}</h3><div class="card">
@@ -42,3 +36,23 @@ var firebaseConfig = {
         $("#list").append(row);
     });
 });
+
+$(function(){
+  document.addEventListener('init', function(event) {
+    var page = event.target;
+  
+    if (page.id === 'profile') {
+      Logout();
+    }
+  });
+})
+
+function Logout(){
+  $("#signout").click(function(){
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      // An error happened.
+    });
+  })
+}
