@@ -90,10 +90,9 @@ function getMovieHome() {
     $("#gg").empty();
     db.collection("movies").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-
+        var i = 1;
         if (doc.data().catagory[0] == $(this).attr("id")) {
           const result = `
-
                 <div  style="width:150px">
                    
                       <img src="${doc.data().posterURL}" width="100%">
