@@ -1,84 +1,167 @@
-.page__background{
-    background-color: white;
+.page__background {
+  background-color: white;
 }
-.form-control{
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
+.form-control {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
 }
-.rowmagin{  
-    margin-top: 15px;
-     margin-bottom: 15px;
-     padding-left: 10px;
-    padding-right: 10px;
- }
- .list-item__subtitle {
- font-size: medium;
- font-family: 'Varela Round', sans-serif;
- }
- .list-item__thumbnail{
-     width: 150px;
-     height: 230px;
-     border-radius: 6px;
-     display: block;
-     
-     
- 
- }
- .content{
-     font-family: 'Varela Round', sans-serif;
- }
- .search{
-     border: dashed;
- }
- 
- .tabbar {
-     background-color: rgb(32, 32, 32);
- }
- .toolbar{
-     background-color:  rgb(32, 32, 32);
-     
- }
- ons-carousel[fullscreen] {
-     height: 58%;
- }
- :checked+.tabbar__button {
-     color: rgb(212, 193, 193);
- }
- .bottom-bar, .toolbar__center, .toolbar__title {
-     font-family: 'Varela Round', sans-serif;
-     font-size: 22px;
-     margin: 0;
-     color: white;
-     padding: 0;
- }
- .font1{
-     font-family: 'Varela Round', sans-serif;
-     font-size: 21px;
-     color: black;
- }
-  .carousel ons-carousel-item img {
-           width: 100%;
-           max-height: 190px
-         }
-         .movie_list {
-           margin: 5px;
-           height: 130px;
-           padding-top: 15px;
-         }
-         .movie_list img {
-           width: 95%
-         }
- .back-button__icon{
-     fill: seashell;
-      
-     }
- 
-     .back-button__label{
-         color: white;
-     margin-top: 3px;
-     }
- .center{
-     color: white; text-shadow: black 0.1em 0.1em 0.2em
- }
+.rowmagin {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.list-item__subtitle {
+  font-size: medium;
+  font-family: "Varela Round", sans-serif;
+}
+.list-item__thumbnail {
+  width: 150px;
+  height: 230px;
+  border-radius: 6px;
+  display: block;
+}
+.content {
+  font-family: "Varela Round", sans-serif;
+}
+.search {
+  border: dashed;
+}
 
+.tabbar {
+  background-color: rgb(32, 32, 32);
+}
+.toolbar {
+  background-color: rgb(32, 32, 32);
+}
+ons-carousel[fullscreen] {
+  height: 58%;
+}
+:checked + .tabbar__button {
+  color: rgb(212, 193, 193);
+}
+.bottom-bar,
+.toolbar__center,
+.toolbar__title {
+  font-family: "Varela Round", sans-serif;
+  font-size: 22px;
+  margin: 0;
+  color: white;
+  padding: 0;
+}
+.font1 {
+  font-family: "Varela Round", sans-serif;
+  font-size: 21px;
+  color: black;
+}
+.carousel ons-carousel-item img {
+  width: 100%;
+  max-height: 190px;
+}
+.movie_list {
+  margin: 5px;
+  height: 130px;
+  padding-top: 15px;
+}
+.movie_list img {
+  width: 95%;
+}
+.back-button__icon {
+  fill: seashell;
+}
+
+.back-button__label {
+  color: white;
+  margin-top: 3px;
+}
+.center {
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.rowmagin {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.list-item__subtitle {
+  font-size: medium;
+  font-family: "Varela Round", sans-serif;
+}
+.list-item__thumbnail {
+  width: 150px;
+  height: 230px;
+  border-radius: 6px;
+  display: block;
+}
+.content {
+  font-family: "Varela Round", sans-serif;
+}
+.search {
+  border: dashed;
+}
+
+.tabbar {
+  background-color: rgb(32, 32, 32);
+}
+.toolbar {
+  background-color: rgb(32, 32, 32);
+}
+ons-carousel[fullscreen] {
+  height: 58%;
+}
+:checked + .tabbar__button {
+  color: rgb(212, 193, 193);
+}
+.bottom-bar,
+.toolbar__center,
+.toolbar__title {
+  font-family: "Varela Round", sans-serif;
+  font-size: 22px;
+  margin: 0;
+  color: white;
+  padding: 0;
+}
+.font1 {
+  font-family: "Varela Round", sans-serif;
+  font-size: 21px;
+  color: black;
+}
+.carousel ons-carousel-item img {
+  width: 100%;
+  max-height: 190px;
+}
+.movie_list {
+  margin: 5px;
+  height: 130px;
+  padding-top: 15px;
+}
+.movie_list img {
+  width: 95%;
+}
+.back-button__icon {
+  fill: seashell;
+}
+
+.back-button__label {
+  color: white;
+  margin-top: 3px;
+}
+.center {
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+.button {
+  font-size: small;
+  color: black;
+  background-color: white;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.activetype {
+  background-color: #666;
+  color: white;
+}

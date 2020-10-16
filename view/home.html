@@ -1,18 +1,25 @@
-<ons-page id="home1">
-    <ons-navigator swipeable id="myNavigator" page="page1.html"></ons-navigator>
-    <template id="page1.html">
-        <ons-page id="home">
-       <div class="" id="Test"></div>
-       <div class="Hometitle" id="Test">
-         
-         <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
+<ons-page id="home">
+  <ons-navigator swipeable id="myNavigator_home" page="page1.html"></ons-navigator>
+  <template id="page1.html">
+    <ons-page id="home">
+      <div class="container" id="btnCategory" style="background-color: white; text-align: center; border-radius: 12px">
 
-         
-        </div>
-        <div id="list">
-                
-        </div>
+        <button id="Action" class="button activetype">ACTION</button>
+        <button id="Comedy" class="button">COMEDY</button>
+        <button id="Horror" class="button">HORROR</button>
+        <button id="Romantic" class="button">ROMANTIC</button>
+      </div>
+      <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carouselBig">
+        <div id="test"></div>
+      </ons-carousel>
 
-        </ons-page>
-    </template>
+      <br />
+      <div id="movieList">
+        <div class="font1"></div>
+        <div class=" movie_list" id="gg">
+
+        </div>
+      </div>
+    </ons-page>
+  </template>
 </ons-page>

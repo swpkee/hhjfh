@@ -26,36 +26,32 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 db.collection("movies").get().then((querySnapshot) => {
   querySnapshot.forEach((doc) => {
-    var row = `<div id="" style="width:150px">
-    <ons-carousel-item>
+    if (doc.data().eiei == 1) {
+      const result = `
+
+            <div  style="width:150px">
+               
+                  <img src="${doc.data().posterURL}" width="100%">
+              
+            </div>`
+
+      $("#gg").append(result)
+
+    }
+  });
+});
+//< ----------------------------------------homepage--------------------------------------------->
+db.collection("homepage").get().then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+
+    var row1 = `
     
-    </ons-carosel-item>
-    </div>
-    <ons-row class="rowmagin">
-   <ons-col>
-   <img src="${doc.data().posterURL}" width="100%"
-      </div>
-   </ons-col>
-   <ons-col>
-   <p class="card-text">${doc.data().title}(${doc.data().year})</p>
-         <p class="card-text">${doc.data().shotstory}</p>
-           </span>
-            <p class="rating">Ratings</p>
-                   <div class="starrate">
-                       <ons-icon class="starspace" icon="md-star"></ons-icon>
-                       <ons-icon class="starspace" icon="md-star"></ons-icon>
-                       <ons-icon class="starspace" icon="md-star"></ons-icon>
-                       <ons-icon class="starspace" icon="md-star"></ons-icon>
-                   </div>
-         </ons-col>
- </ons-row>`
-    //     <img class="card-img-top" src="${doc.data().posterURL}" alt="">
-    //     <div class="card-body">
-    //         <h4 class="card-title">${doc.data().title}(${doc.data().year})</h4>
-    //         <p class="card-text">${doc.data().shotstory}</p>
-    //     </div>
-    // </div>
-    $("#list").append(row);
+            <ons-carousel-item>
+              <img src="${doc.data().posterURL}" />
+            </ons-carousel-item>
+`
+
+    $("#test").append(row1);
   });
 });
 
@@ -78,4 +74,49 @@ function Logout() {
     });
   })
 }
+
+document.addEventListener('init', function (event) {
+  var page = event.target;
+  if (page.id === 'home') {
+    getMovieHome()
+  }
+});
+//<=====================================ล่างhomepage======================================>
+function getMovieHome() {
+  $("#btnCategory button").click(function () {
+    $(this).siblings().removeClass('activetype')
+    $(this).addClass('activetype');
+    $(".font1").empty();
+    $("#gg").empty();
+    db.collection("movies").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+
+        if (doc.data().catagory[0] == $(this).attr("id")) {
+          const result = `
+
+                <div  style="width:150px">
+                   
+                      <img src="${doc.data().posterURL}" width="100%">
+                  
+                </div>`
+          $(".font1").append($(this).attr("id"))
+          $("#gg").append(result)
+
+        }
+      });
+    });
+  });
+};
+
+
+$("#carouselBig ons-carousel-item").click(function () {
+  document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
+})
+
+
+function getmovieSearch() {
+  console.log($("#searchInput").val());
+}
+
+
 
