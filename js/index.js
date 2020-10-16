@@ -47,7 +47,7 @@ db.collection("homepage").get().then((querySnapshot) => {
     var row1 = `
     
             <ons-carousel-item>
-              <img src="${doc.data().posterURL}" />
+              <img src="${doc.data().posterURL}" width="100%"/>
             </ons-carousel-item>
 `
 
@@ -93,7 +93,7 @@ function getMovieHome() {
         var i = 1;
         if (doc.data().catagory[0] == $(this).attr("id")) {
           const result = `
-                <div  style="width:150px">
+                <div >
                    
                       <img src="${doc.data().posterURL}" width="100%">
                   
