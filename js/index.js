@@ -29,9 +29,10 @@ db.collection("movies").get().then((querySnapshot) => {
     if (doc.data().eiei == 1) {
       const result = `
 
-            <div  style="width:150px">
-               
-                  <img src="${doc.data().posterURL}" width="100%">
+            <div>
+            <ons-carousel-item>
+                  <img src="${doc.data().posterURL}" style="width:90%;"> 
+                  </ons-carousel-item>
               
             </div>`
 
@@ -47,7 +48,8 @@ db.collection("homepage").get().then((querySnapshot) => {
     var row1 = `
     
             <ons-carousel-item>
-              <img src="${doc.data().posterURL}" width="100%"/>
+              <img src="${doc.data().posterURL}" width="100%"style="
+              height: 395px;"> 
             </ons-carousel-item>
 `
 
@@ -93,9 +95,9 @@ function getMovieHome() {
         var i = 1;
         if (doc.data().catagory[0] == $(this).attr("id")) {
           const result = `
-                <div >
+                <div>
                    
-                      <img src="${doc.data().posterURL}" width="100%">
+                      <img src="${doc.data().posterURL}" style="width:90%;height:100%;"> 
                   
                 </div>`
           $(".font1").append($(this).attr("id"))
