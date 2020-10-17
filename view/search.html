@@ -1,10 +1,18 @@
-<ong-page id="SearcgPage">
-   <ons-navigator swipeable id="Navigator_search" page="Search.html"> </ons-navigator>
-   <template id="Search.html">
-      <one-page id="Search" class="margin-start cairo">
-         <ons-row class="d-flex align-item-center searchbar">
+<ons-page id="search">
+   <p style="text-align: center; margin-top: 10px;">
 
-         </ons-row>
-      </one-page>
-   </template>
-</ong-page>
+      <ons-search-input id="searchInput" placeholder="Search" onchange="getmoviefromSearch()"></ons-search-input>
+   </p>
+   <ons-row class="rowmagin" id="search_show">
+      <ons-row id="searchItem">
+
+      </ons-row>
+   </ons-row>
+   </ons-list-item>
+
+
+   </ons-row>
+
+
+   </ons-list>
+</ons-page>
