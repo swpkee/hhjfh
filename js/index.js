@@ -88,8 +88,8 @@ function getMovieHome() {
   $("#btnCategory button").click(function () {
     $(this).siblings().removeClass('activetype')
     $(this).addClass('activetype');
-    $(".font1").empty();
     $("#gg").empty();
+
     db.collection("movies").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         var i = 1;
@@ -100,7 +100,7 @@ function getMovieHome() {
                       <img src="${doc.data().posterURL}" style="width:90%;height:100%;"> 
                   
                 </div>`
-          $(".font1").append($(this).attr("id"))
+
           $("#gg").append(result)
 
         }
@@ -108,6 +108,8 @@ function getMovieHome() {
     });
   });
 };
+
+
 
 
 $("#carouselBig ons-carousel-item").click(function () {
