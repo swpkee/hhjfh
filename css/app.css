@@ -76,88 +76,19 @@ ons-carousel[fullscreen] {
   margin-top: 3px;
 }
 .center {
+  font-size: x-large;
+  font-family: 'Bebas Neue', cursive;
   color: white;
-  text-shadow: black 0.1em 0.1em 0.2em;
-}
-
-.rowmagin {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-.list-item__subtitle {
-  font-size: medium;
-  font-family: "Varela Round", sans-serif;
-}
-.list-item__thumbnail {
-  width: 150px;
-  height: 230px;
-  border-radius: 6px;
-  display: block;
-}
-.content {
-  font-family: "Varela Round", sans-serif;
-}
-.search {
-  border: dashed;
-}
-
-.tabbar {
-  background-color: rgb(32, 32, 32);
-}
-.toolbar {
-  background-color: rgb(32, 32, 32);
-}
-ons-carousel[fullscreen] {
-  height: 58%;
-}
-:checked + .tabbar__button {
-  color: rgb(212, 193, 193);
-}
-.bottom-bar,
-.toolbar__center,
-.toolbar__title {
-  font-family: "Varela Round", sans-serif;
-  font-size: 22px;
-  margin: 0;
-  color: white;
-  padding: 0;
-}
-.font1 {
-  font-family: "Varela Round", sans-serif;
-  font-size: 21px;
-  color: black;
-}
-.carousel ons-carousel-item img {
-  width: 100%;
-  max-height: 190px;
-}
-.movie_list {
-  margin: 5px;
-  height: 130px;
-  padding-top: 15px;
-}
-.movie_list img {
-  width: 95%;
-}
-.back-button__icon {
-  fill: seashell;
-}
-
-.back-button__label {
-  color: white;
-  margin-top: 3px;
-}
-.center {
-  color: white;
-  text-shadow: black 0.1em 0.1em 0.2em;
+  /* text-shadow: black 0.1em 0.1em 0.2em; */
+  animation: mymove 6s infinite;
+  animation-direction: alternate;
 }
 .button {
-  font-size: small;
-  color: black;
+  font-size: 100%;
+  font-family: 'Bebas Neue', cursive;
+  color: grey;
   background-color: white;
-  border-radius: 12px;
+  border-radius: 13px;
   cursor: pointer;
 }
 
@@ -181,5 +112,12 @@ ons-carousel[fullscreen] {
       height: 110%;
   }
 }
+.center1{
+  font-family: 'Bebas Neue', cursive;
+  color: black;
+}
 
 
+.h1{
+  color: black;
+}

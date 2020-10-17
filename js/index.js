@@ -42,20 +42,20 @@ db.collection("movies").get().then((querySnapshot) => {
   });
 });
 //< ----------------------------------------homepage--------------------------------------------->
-db.collection("homepage").get().then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
+// db.collection("recommend").get().then((querySnapshot) => {
+//   querySnapshot.forEach((doc) => {
 
-    var row1 = `
+//     var row1 = `
     
-            <ons-carousel-item>
-              <img src="${doc.data().posterURL}" width="100%"style="
-              height: 395px;"> 
-            </ons-carousel-item>
-`
+//             <ons-carousel-item>
+//             <video id="videoBG" style="width:100%;height:auto;"  autoplay muted loop><source src="${doc.data().posterURL}" type="video/mp4">
+             
+//             </ons-carousel-item>
+// `
 
-    $("#test").append(row1);
-  });
-});
+//     $("#test").append(row1);
+//   });
+// });
 
 $(function () {
   document.addEventListener('init', function (event) {

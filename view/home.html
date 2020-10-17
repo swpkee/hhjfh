@@ -3,17 +3,43 @@
   <template id="page1.html">
     <ons-page id="home">
       <div class="container" id="btnCategory" style="background-color: white; text-align: center; border-radius: 12px">
-        <button id="Romantic" class="button activetype">ROMANTIC</button>
-        <button id="Action" class="button ">ACTION</button>
+        <button id="Action" class="button activetype">ACTION</button>
         <button id="Comedy" class="button">COMEDY</button>
         <button id="Horror" class="button">HORROR</button>
+        <button id="Romantic" class="button">ROMANTIC</button>
 
       </div>
-      <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carouselBig">
-        <div id="test"></div>
+      <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carouselBig" style="height: 32%;">
+        <ons-carousel-item>
+             <video id="videoBG" style="width:100%;height:auto;"  autoplay muted loop><source src="/video/mv str.mp4" type="video/mp4">
+                  </ons-carousel-item>
+                  <ons-carousel-item>
+                  <video id="videoB" style="width:100%;height:auto;"  autoplay muted loop><source src="/video/mv hw.mp4" type="video/mp4">
+                  </ons-carousel-item>
+                    <ons-carousel-item>
+                    <video id="video" style="width:100%;height:auto;"  autoplay muted loop><source src="/video/ted.mp4" type="video/mp4"> 
+                    </ons-carousel-item>  
+        <!-- <div id="test"></div> -->
       </ons-carousel>
 
-
+      <div class="row">
+        <div class="col-7 text-center" id="recompic">
+          <img src="/image/5.jpg" style="width: 75%;margin-top: 20px;margin-top: 10px;">
+        </div>
+        <div class="col-5" id="recomdata" style="font-size: 70%;margin-top: 10px;padding-right: 31px;padding-left: 0px;">
+          <p style="font-weight: bold;margin-bottom: 10px;">TENET</p>
+          <div class="deatails">
+          Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.
+        </div>
+          <div class="starrate">
+            <ons-icon class="starspace" icon="md-star"></ons-icon>
+            <ons-icon class="starspace" icon="md-star"></ons-icon>
+            <ons-icon class="starspace" icon="md-star"></ons-icon>
+            <ons-icon class="starspace" icon="md-star"></ons-icon>
+            &nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:x-large;color: green;">85%</b>
+        </div>
+        </div>
+      </div>
       <div id="movieList">
 
         <ons-carousel auto-refresh swipeable overscrollable item-width="150px">
