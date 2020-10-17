@@ -23,7 +23,13 @@
 
     <title>Welcome</title>
     <!-- Required meta tags -->
-    <div class="container" style=" margin-top: 180px;">
+    <video id="videoBG"  autoplay muted loop>
+        <source src="/image/intro.mp4" type="video/mp4">
+    </video>
+    <div class="container" style="margin-top: 50%;">
+          </div>
+        </div>
+        <div class="card" style="margin-left: 20px;margin-right: 20px;margin-top: 0px;margin-bottom: 0px;">
         <div class="display2 text-center">
             <h1>WATCH SUP</h1>
         </div>
@@ -38,14 +44,17 @@
         </div>
 
         <br>
-        <p class="text-center">
+        <div class="text-center">
             <button type="button" class="btn btn-primary" id="signinemail">Sign in</button></p>
-        <p class="text-center">
-            <button type="button" class="btn btn-danger" id="signingoogle">Sign in with Google</button></p>
+        <div class="text-center">
+            <button type="button" class="btn btn-light" id="signingoogle" style="width:210px; padding-top: 0%; padding-bottom: 0%; padding-left: 0%; padding-right: 0%;">
+                <img src="/image/google.png"style="width:210px">
+            </button></p>
         </p>
         <p class="text-center">
         <h3 id="errormessage"></h3>
         </p>
+    </div>
     </div>
     </ons-page>
 
