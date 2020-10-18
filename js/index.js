@@ -41,15 +41,16 @@ db.collection("movies").get().then((querySnapshot) => {
     }
   });
 });
+
 //< ----------------------------------------homepage--------------------------------------------->
 // db.collection("recommend").get().then((querySnapshot) => {
 //   querySnapshot.forEach((doc) => {
 
 //     var row1 = `
-    
+
 //             <ons-carousel-item>
 //             <video id="videoBG" style="width:100%;height:auto;"  autoplay muted loop><source src="${doc.data().posterURL}" type="video/mp4">
-             
+
 //             </ons-carousel-item>
 // `
 
@@ -92,7 +93,6 @@ function getMovieHome() {
 
     db.collection("movies").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        var i = 1;
         if (doc.data().catagory[0] == $(this).attr("id")) {
           const result = `
                 <div>
@@ -104,17 +104,24 @@ function getMovieHome() {
           $("#gg").append(result)
 
         }
+
+
       });
     });
   });
+  $("#movieList ons-carousel div").click(function () {
+    document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
+  })
+
+  $("#carouselBig ons-carousel-item video").click(function () {
+    document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
+  })
 };
 
 
 
 
-$("#carouselBig ons-carousel-item").click(function () {
-  document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
-})
+
 
 
 
@@ -127,11 +134,13 @@ function getmoviefromSearch() {
   $("#searchItem").empty();
   db.collection("movies").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
+
       const titlemovie = doc.data().title;
       const newtitleMovie = titlemovie.replace(/ /g, "");
+      console.log(newtitleMovie);
       if (newtitleMovie.toLowerCase().indexOf(newsearchText.toLowerCase()) != -1) {
         const eiei = `
-        <ons-row class="rowmagin"> 
+        <ons-row class="rowmagin se"> 
         <ons-col>
         <img src="${doc.data().posterURL}" style="width:90%;height:100%;">
            </div>
@@ -154,5 +163,10 @@ function getmoviefromSearch() {
         $("#searchItem").append(eiei)
       }
     });
+    $(".se").click(function () {
+
+      document.querySelector("#myNavigator_search").pushPage('view/moviedetails.html');
+    })
   });
+
 }
