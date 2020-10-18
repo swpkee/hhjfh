@@ -51,7 +51,7 @@ $(function () {
         const result = `
       <div class="row" id="recomlist">
       <div class="col-7 text-center" id="recompic">
-      <img src="${doc.data().posterURL}" style="width: 75%;margin-top: 20px;margin-top: 10px;margin-right: 20px;">
+      <img src="${doc.data().posterURL}" style="width: 75%;margin-top: 5px;margin-top: 10px;margin-right: 20px;">
     </div>
     <div class="col-5" id="recomdata" style="font-size: 70%;margin-top: 10px;padding-right: 31px;padding-left: 0px;">
       <p style="font-weight: bold;margin-bottom: 10px;">${doc.data().title}</p>
@@ -59,11 +59,12 @@ $(function () {
       ${doc.data().shotstory}
     </div>
       <div class="starrate">
-        <ons-icon class="starspace" icon="md-star"></ons-icon>
-        <ons-icon class="starspace" icon="md-star"></ons-icon>
-        <ons-icon class="starspace" icon="md-star"></ons-icon>
-        <ons-icon class="starspace" icon="md-star"></ons-icon>
-        &nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:x-large;color: green;">85%</b>
+      <ons-icon  icon="fa-star"></ons-icon>
+      <ons-icon  icon="fa-star"></ons-icon>
+      <ons-icon  icon="fa-star"></ons-icon>
+      <ons-icon  icon="fa-star"></ons-icon>
+      <ons-icon  icon="fa-star"></ons-icon>
+        &nbsp;&nbsp;<b style="font-size:x-large;color: green;">${doc.data().persen}</b>
 
     </div>
       </div>
@@ -92,6 +93,54 @@ function getMovieHome1() {
     db.collection("movies").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         if (doc.data().catagory[0] == $(this).attr("id") && doc.data().rating > 9) {
+
+//function star ------------------------------------------------------------------------
+
+          if (doc.data().rating >9) {
+            var rating =`
+            <div class="starrate">
+            <ons-icon  icon="fa-star"></ons-icon>
+            <ons-icon  icon="fa-star"></ons-icon>
+            <ons-icon  icon="fa-star"></ons-icon>
+            <ons-icon  icon="fa-star"></ons-icon>
+            <ons-icon  icon="fa-star"></ons-icon>
+      
+              &nbsp;&nbsp;<b style="font-size:x-large;color: green;">${doc.data().persen}</b>
+            `
+          }
+          else if (doc.data().rating > 7 && doc.data().rating < 9) {
+            var rating =`
+            <div class="starrate">
+            <ons-icon  icon="fa-star"></ons-icon>
+            <ons-icon  icon="fa-star"></ons-icon>
+            <ons-icon  icon="fa-star"></ons-icon>
+            <ons-icon  icon="fa-star"></ons-icon>
+      
+              &nbsp;&nbsp;<b style="font-size:x-large;color: green;">${doc.data().persen}</b>
+            `
+          }
+
+          else if (doc.data().rating > 4 && doc.data().rating < 7) {
+            var rating =`
+            <div class="starrate">
+            <ons-icon  icon="fa-star"></ons-icon>
+            <ons-icon  icon="fa-star"></ons-icon>
+            <ons-icon  icon="fa-star"></ons-icon>
+       
+      
+              &nbsp;&nbsp;<b style="font-size:x-large;color: green;">${doc.data().persen}</b>
+            `
+          }
+
+          else if (doc.data().rating > 1 && doc.data().rating < 4) {
+            var rating =`
+            <div class="starrate">
+            <ons-icon  icon="fa-star"></ons-icon>
+            <ons-icon  icon="fa-star"></ons-icon>
+              &nbsp;&nbsp;<b style="font-size:x-large;color: green;">${doc.data().persen}</b>
+            `
+          }
+
           const resultrecom = `
       <div class="row" id="recomlist">
       <div class="col-7 text-center" id="recompic">
@@ -102,15 +151,7 @@ function getMovieHome1() {
       <div class="deatails">
       ${doc.data().shotstory}
     </div>
-    
-      <div class="starrate">
-        <ons-icon class="starspace" icon="md-star"></ons-icon>
-        <ons-icon class="starspace" icon="md-star"></ons-icon>
-        <ons-icon class="starspace" icon="md-star"></ons-icon>
-        <ons-icon class="starspace" icon="md-star"></ons-icon>
-
-        &nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:x-large;color: green;">85%</b>
-      
+          `+rating+`
     </div>
     </div>
       </div>
