@@ -1,18 +1,17 @@
 <ons-page id="search">
-   <p style="text-align: center; margin-top: 10px;">
+   <ons-navigator swipeable id="myNavigator_search" page="page2.html"></ons-navigator>
+   <template id="page2.html">
+      <ons-page id="search1">
+         <p style="text-align: center; margin-top: 10px;">
 
-      <ons-search-input id="searchInput" placeholder="Search" onchange="getmoviefromSearch()"></ons-search-input>
-   </p>
-   <ons-row class="rowmagin" id="search_show">
-      <ons-row id="searchItem">
+            <ons-search-input id="searchInput" placeholder="Search" onchange="getmoviefromSearch()"></ons-search-input>
+         </p>
+         <ons-row class="rowmagin" id="search_show">
+            <ons-row id="searchItem">
 
-      </ons-row>
-   </ons-row>
-   </ons-list-item>
-
-
-   </ons-row>
-
-
-   </ons-list>
+            </ons-row>
+         </ons-row>
+         </ons-list-item>
+      </ons-page>
+   </template>
 </ons-page>
