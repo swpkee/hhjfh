@@ -75,7 +75,7 @@ ons-carousel[fullscreen] {
   color: white;
   margin-top: 3px;
 }
-.center {
+.center1 {
   text-align: center;
   font-size: x-large;
   font-family: "Bebas Neue", cursive;
@@ -112,10 +112,6 @@ ons-carousel[fullscreen] {
     width: auto;
     height: 110%;
   }
-}
-.center1 {
-  font-family: "Bebas Neue", cursive;
-  color: black;
 }
 
 .h1 {
