@@ -63,8 +63,8 @@ $(function () {
       <img class="oo" id="${doc.data().title}" src="${doc.data().posterURL}" style="width: 75%;margin-top: 5px;margin-top: 10px;margin-right: 20px;">
     </div>
     <div class="col-5" id="recomdata" style="font-size: 70%;margin-top: 10px;padding-right: 31px;padding-left: 0px;">
-      <p style="font-weight: bold;margin-bottom: 10px;">${doc.data().title}</p>
-      <div class="deatails">
+      <p style="font-weight: bold;margin-bottom: 10px;font-family: 'Bebas Neue', cursive;font-size:18px">${doc.data().title}</p>
+      <div class="deatails" style="font-family: 'Open Sans', sans-serif;">
       ${doc.data().shotstory}
     </div>
       <div class="starrate">
@@ -100,18 +100,82 @@ function moviedetial(p) {
   db.collection("movies").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       if (doc.data().title == p) {
-        const far = `  <ons-card>
-      <img src="${doc.data().posterURL}" alt="Onsen UI" style="width: 100%">
-      <div class="title">
-        <h1>${doc.data().title}<h1>
-      </div>
-      <div class="content">
-        <div>
-          ${doc.data().shotstory}
-        </div>
-        <br>
-    </ons-card>`
-        $("#moviedetail").append(far);
+        if (doc.data().rating > 9) {
+          var rating = `
+          <div class="starrate">
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+    
+          &nbsp;&nbsp<b style="font-size:x-large;color:green;text-align: right;">${doc.data().persen}</b>
+          `
+        }
+        else if (doc.data().rating > 7 && doc.data().rating < 9) {
+          var rating = `
+          <div class="starrate">
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+    
+          &nbsp;&nbsp<b style="font-size:x-large;color:green;text-align:right;">${doc.data().persen}</b>
+          `
+        }
+
+        else if (doc.data().rating > 4 && doc.data().rating < 8) {
+          var rating = `
+          <div class="starrate">
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+     
+    
+          &nbsp;&nbsp<b style="font-size:x-large;color:orange;text-align:right;">${doc.data().persen}</b>
+          `
+        }
+
+        else if (doc.data().rating > 1 && doc.data().rating < 5) {
+          var rating = `
+          <div class="starrate">
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          &nbsp;&nbsp<b style="font-size:x-large;color:red;text-align:right;">${doc.data().persen}</b>
+          `
+        }
+
+        const far = ` 
+        <video
+    id="my-video"
+    class="video-js"
+    controls
+    preload="auto"
+    width="640"
+    height="264"
+    poster="MY_VIDEO_POSTER.jpg"
+    data-setup="{}"style="
+    height: 250px;">
+    <source src="/video/mvhw.mp4" type="video/mp4" />
+    </video>
+    
+      <div class="row ooo" id="${doc.data().title}">
+      <div class="col-6 text-center" id="${doc.data().title}">
+      <img src="${doc.data().posterURL}" style="width: 75%;margin-top: 20px;margin-top: 10px;margin-right: 20px;">
+    </div>
+    <div class="col-6" id="${doc.data().title}" style="font-size: 70%;margin-top: 10px;padding-right: 31px;padding-left: 0px;">
+      <p style="font-size:18px;margin-bottom: 10px;font-family: 'Bebas Neue', cursive;">${doc.data().title}</p>
+      <div class="deatails" style="font-family: 'Open Sans', sans-serif;">
+      ${doc.data().shotstory}
+    </div>
+          `+ rating + `
+    </div>
+    </div>
+ 
+  `
+    $("#moviedetail").append(far);
+    
+
 
 
       }
@@ -144,7 +208,7 @@ function getMovieHome1() {
             <ons-icon  icon="fa-star"></ons-icon>
             <ons-icon  icon="fa-star"></ons-icon>
       
-              &nbsp;&nbsp;<b style="font-size:x-large;color: green;">${doc.data().persen}</b>
+            &nbsp;&nbsp<b style="font-size:x-large;color:green;text-align: right;">${doc.data().persen}</b>
             `
           }
           else if (doc.data().rating > 7 && doc.data().rating < 9) {
@@ -155,28 +219,28 @@ function getMovieHome1() {
             <ons-icon  icon="fa-star"></ons-icon>
             <ons-icon  icon="fa-star"></ons-icon>
       
-              &nbsp;&nbsp;<b style="font-size:x-large;color: green;">${doc.data().persen}</b>
+            &nbsp;&nbsp<b style="font-size:x-large;color:green;text-align: right;">${doc.data().persen}</b>
             `
           }
 
-          else if (doc.data().rating > 4 && doc.data().rating < 7) {
+          else if (doc.data().rating > 4 && doc.data().rating < 8) {
             var rating = `
             <div class="starrate">
             <ons-icon  icon="fa-star"></ons-icon>
             <ons-icon  icon="fa-star"></ons-icon>
             <ons-icon  icon="fa-star"></ons-icon>
-       
+            
       
-              &nbsp;&nbsp;<b style="font-size:x-large;color: green;">${doc.data().persen}</b>
+            &nbsp;&nbsp<b style="font-size:x-large;color:green;text-align: right;">${doc.data().persen}</b>
             `
           }
 
-          else if (doc.data().rating > 1 && doc.data().rating < 4) {
+          else if (doc.data().rating > 1 && doc.data().rating < 5) {
             var rating = `
             <div class="starrate">
             <ons-icon  icon="fa-star"></ons-icon>
             <ons-icon  icon="fa-star"></ons-icon>
-              &nbsp;&nbsp;<b style="font-size:x-large;color: green;">${doc.data().persen}</b>
+            &nbsp;&nbsp<b style="font-size:x-large;color:green;text-align: right;">${doc.data().persen}</b>
             `
           }
 
@@ -186,17 +250,12 @@ function getMovieHome1() {
       <img src="${doc.data().posterURL}" style="width: 75%;margin-top: 20px;margin-top: 10px;margin-right: 20px;">
     </div>
     <div class="col-5" id="${doc.data().title}" style="font-size: 70%;margin-top: 10px;padding-right: 31px;padding-left: 0px;">
-      <p style="font-weight: bold;margin-bottom: 10px;">${doc.data().title}</p>
-      <div class="deatails">
+      <p style="font-size:18px;margin-bottom: 10px;font-family: 'Bebas Neue', cursive;">${doc.data().title}</p>
+      <div class="deatails" style="font-family: 'Open Sans', sans-serif;">
       ${doc.data().shotstory}
     </div>
           `+ rating + `
-    </div>
-    </div>
-      </div>
-      
-              
-            </div>`
+    </div>`
 
           $("#recomlist").append(resultrecom)
 
@@ -317,23 +376,63 @@ function getmoviefromSearch() {
       const newtitleMovie = titlemovie.replace(/ /g, "");
       console.log(newtitleMovie);
       if (newtitleMovie.toLowerCase().indexOf(newsearchText.toLowerCase()) != -1) {
+        if (doc.data().rating > 9) {
+          var rating = `
+          <div class="starrate">
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+    
+           <b style="font-size:x-large;color:green;text-align: right;">${doc.data().persen}</b>
+          `
+        }
+        else if (doc.data().rating >= 7 && doc.data().rating < 9) {
+          var rating = `
+          <div class="starrate">
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+    
+          <b style="font-size:x-large;color:green;text-align:right;">${doc.data().persen}</b>
+          `
+        }
+
+        else if (doc.data().rating >= 4 && doc.data().rating < 7) {
+          var rating = `
+          <div class="starrate">
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+     
+    
+          <b style="font-size:x-large;color:orange;text-align:right;">${doc.data().persen}</b>
+          `
+        }
+
+        else if (doc.data().rating > 1 && doc.data().rating < 5) {
+          var rating = `
+          <div class="starrate">
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+            <b style="font-size:x-large;color:red;text-align:right;">${doc.data().persen}</b>
+          `
+        }
+
         const eiei = `
         <ons-row class="rowmagin se" id="${doc.data().title}"> 
         <ons-col>
-        <img src="${doc.data().posterURL}" style="width:90%;height:100%;">
+        <img src="${doc.data().posterURL}" style="width:90%;height:95%;">
            </div>
         </ons-col>
         <ons-col>
-              <span class="list-item__title">${doc.data().title}</span><br>
-              <span class="list-item__subtitle">"${doc.data().shotstory}"
+              <span class="list-item__title" style="font-family: 'Bebas Neue', cursive;font-size:18px;">${doc.data().title}</span><br>
+              <span class="list-item__subtitle" style="font-family: 'Open Sans', sans-serif;font-size:12px;">"${doc.data().shotstory}"
                 </span>
                  <p class="rating">Ratings</p>
-                        <div class="starrate">
-                            <ons-icon class="starspace" icon="md-star"></ons-icon>
-                            <ons-icon class="starspace" icon="md-star"></ons-icon>
-                            <ons-icon class="starspace" icon="md-star"></ons-icon>
-                            <ons-icon class="starspace" icon="md-star"></ons-icon>
-                        </div>
+                 `+ rating + `
               </ons-col>
       </ons-row>`
         console.log(doc.data());
@@ -347,3 +446,101 @@ function getmoviefromSearch() {
   });
 
 }
+
+$(function () {
+  db.collection("movies").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      if (doc.data().rating > 1) {
+        if (doc.data().rating > 9) {
+          var rating = `
+          <div class="starrate">
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+    
+           <b style="font-size:x-large;color:green;text-align: right;">${doc.data().persen}</b>
+          `
+        }
+        else if (doc.data().rating >= 7 && doc.data().rating < 9) {
+          var rating = `
+          <div class="starrate">
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+    
+          <b style="font-size:x-large;color:green;text-align:right;">${doc.data().persen}</b>
+          `
+        }
+
+        else if (doc.data().rating >= 4 && doc.data().rating < 7) {
+          var rating = `
+          <div class="starrate">
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+     
+    
+          <b style="font-size:x-large;color:orange;text-align:right;">${doc.data().persen}</b>
+          `
+        }
+
+        else if (doc.data().rating > 1 && doc.data().rating < 5) {
+          var rating = `
+          <div class="starrate">
+          <ons-icon  icon="fa-star"></ons-icon>
+          <ons-icon  icon="fa-star"></ons-icon>
+            <b style="font-size:x-large;color:red;text-align:right;">${doc.data().persen}</b>
+          `
+        }
+
+        const result = `
+        <ons-row class="rowmagin vvv" id="${doc.data().title}"> 
+        <ons-col>
+        <img src="${doc.data().posterURL}" style="width:90%;height:95%;">
+           </div>
+        </ons-col>
+        <ons-col>
+              <span class="list-item__title" style="font-family: 'Bebas Neue', cursive;font-size:18px;">${doc.data().title}</span><br>
+              <span class="list-item__subtitle" style="font-family: 'Open Sans', sans-serif;font-size:12px;">"${doc.data().shotstory}"
+                </span>
+                 <p class="rating">Ratings</p>
+                 `+ rating + `
+              </ons-col>
+      </ons-row>`
+        $("#searchItem").append(result)
+
+      }
+    });
+    $(".vvv").click(function () {
+
+      moviedetial($(this).attr('id'))
+      document.querySelector("#myNavigator_search").pushPage('view/moviedetails.html');
+    })
+  });
+
+});
+$(function () {
+  db.collection("movies").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      const result1 =`
+<ons-carousel-item>
+          <video id="videoBG" style="width:100%;height:auto;" autoplay muted loop>
+            <source src="/video/mvstr.mp4" type="video/mp4">
+        </ons-carousel-item>
+        <ons-carousel-item>
+          <video id="videoB" style="width:100%;height:auto;" autoplay muted loop>
+            <source src="/video/mvhw.mp4" type="video/mp4">
+        </ons-carousel-item>
+        <ons-carousel-item>
+          <video id="video" style="width:100%;height:auto;" autoplay muted loop>
+            <source src="/video/ted.mp4" type="video/mp4">
+        </ons-carousel-item>
+        `
+        $('#carouselBig').append(result1)
+      })
+    });
+  
+  });

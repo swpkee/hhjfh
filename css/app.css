@@ -121,3 +121,6 @@ ons-carousel[fullscreen] {
 .h1{
   color: black;
 }
+.video-js{
+  width: 100%;
+}
