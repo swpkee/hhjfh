@@ -31,7 +31,7 @@ db.collection("movies").get().then((querySnapshot) => {
 
             <div>
             <ons-carousel-item>
-                  <img src="${doc.data().posterURL}" style="width:90%;"> 
+                  <img src="${doc.data().posterURL}" style="width:90%;height:100%;"> 
                   </ons-carousel-item>
               
             </div>`
@@ -41,6 +41,82 @@ db.collection("movies").get().then((querySnapshot) => {
     }
   });
 });
+
+//------------------------- auto show ---------------------
+db.collection("movies").get().then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+    if (doc.data().recom == 1) {
+      const result = `
+      <div class="row" id="recomlist">
+      <div class="col-7 text-center" id="recompic">
+      <img src="${doc.data().posterURL}" style="width: 75%;margin-top: 20px;margin-top: 10px;margin-right: 20px;">
+    </div>
+    <div class="col-5" id="recomdata" style="font-size: 70%;margin-top: 10px;padding-right: 31px;padding-left: 0px;">
+      <p style="font-weight: bold;margin-bottom: 10px;">TENET</p>
+      <div class="deatails">
+      ${doc.data().shotstory}
+    </div>
+      <div class="starrate">
+        <ons-icon class="starspace" icon="md-star"></ons-icon>
+        <ons-icon class="starspace" icon="md-star"></ons-icon>
+        <ons-icon class="starspace" icon="md-star"></ons-icon>
+        <ons-icon class="starspace" icon="md-star"></ons-icon>
+        &nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:x-large;color: green;">85%</b>
+    </div>
+    </div>
+      </div>
+      
+              
+            </div>`
+
+      $("#recomlist").append(result)
+
+    }
+  });
+});
+//------------------------- auto show ---------------------
+function getMovieHome() {
+  $("#btnCategory button").click(function () {
+    $(this).siblings().removeClass('activetype')
+    $(this).addClass('activetype');
+    $("#recomlist").empty();
+
+db.collection("movies").get().then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+    if (doc.data().recom[0] == $(this).attr("id")) {
+      const resultrecom = `
+      <div class="row" id="recomlist">
+      <div class="col-7 text-center" id="recompic">
+      <img src="${doc.data().posterURL}" style="width: 75%;margin-top: 20px;margin-top: 10px;margin-right: 20px;">
+    </div>
+    <div class="col-5" id="recomdata" style="font-size: 70%;margin-top: 10px;padding-right: 31px;padding-left: 0px;">
+      <p style="font-weight: bold;margin-bottom: 10px;">TENET</p>
+      <div class="deatails">
+      ${doc.data().shotstory}
+    </div>
+      <div class="starrate">
+        <ons-icon class="starspace" icon="md-star"></ons-icon>
+        <ons-icon class="starspace" icon="md-star"></ons-icon>
+        <ons-icon class="starspace" icon="md-star"></ons-icon>
+        <ons-icon class="starspace" icon="md-star"></ons-icon>
+        &nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:x-large;color: green;">85%</b>
+    </div>
+    </div>
+      </div>
+      
+              
+            </div>`
+
+      $("#recomlist").append(resultrecom)
+
+    }
+  });
+});
+$("#movieList ons-carousel div").click(function () {
+  document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
+})
+})
+};
 
 //< ----------------------------------------homepage--------------------------------------------->
 // db.collection("recommend").get().then((querySnapshot) => {
