@@ -19,7 +19,7 @@ $(function () {
       // User is signed in.
       var email = user.email;
       console.log(`User with email ${email} signed in`);
-      window.location.href = "index.html";
+      window.location.href = "watchsup.html";
     }
   });
 
