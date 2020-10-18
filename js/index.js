@@ -43,16 +43,18 @@ db.collection("movies").get().then((querySnapshot) => {
 });
 
 //------------------------- auto show ---------------------
-db.collection("movies").get().then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
-    if (doc.data().recom == 1) {
-      const result = `
+$(function () {
+
+  db.collection("movies").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      if (doc.data().catagory[0] == "Action" && doc.data().rating > 9) {
+        const result = `
       <div class="row" id="recomlist">
       <div class="col-7 text-center" id="recompic">
       <img src="${doc.data().posterURL}" style="width: 75%;margin-top: 20px;margin-top: 10px;margin-right: 20px;">
     </div>
     <div class="col-5" id="recomdata" style="font-size: 70%;margin-top: 10px;padding-right: 31px;padding-left: 0px;">
-      <p style="font-weight: bold;margin-bottom: 10px;">TENET</p>
+      <p style="font-weight: bold;margin-bottom: 10px;">${doc.data().title}</p>
       <div class="deatails">
       ${doc.data().shotstory}
     </div>
@@ -62,44 +64,53 @@ db.collection("movies").get().then((querySnapshot) => {
         <ons-icon class="starspace" icon="md-star"></ons-icon>
         <ons-icon class="starspace" icon="md-star"></ons-icon>
         &nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:x-large;color: green;">85%</b>
+
     </div>
-    </div>
+      </div>
       </div>
       
               
             </div>`
 
-      $("#recomlist").append(result)
+        $("#recomlist").append(result)
 
-    }
+      }
+    });
   });
+  $(".oo").click(function () {
+    document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
+  })
 });
+
 //------------------------- auto show ---------------------
-function getMovieHome() {
+function getMovieHome1() {
   $("#btnCategory button").click(function () {
     $(this).siblings().removeClass('activetype')
     $(this).addClass('activetype');
     $("#recomlist").empty();
 
-db.collection("movies").get().then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
-    if (doc.data().recom[0] == $(this).attr("id")) {
-      const resultrecom = `
+    db.collection("movies").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        if (doc.data().catagory[0] == $(this).attr("id") && doc.data().rating > 9) {
+          const resultrecom = `
       <div class="row" id="recomlist">
       <div class="col-7 text-center" id="recompic">
       <img src="${doc.data().posterURL}" style="width: 75%;margin-top: 20px;margin-top: 10px;margin-right: 20px;">
     </div>
     <div class="col-5" id="recomdata" style="font-size: 70%;margin-top: 10px;padding-right: 31px;padding-left: 0px;">
-      <p style="font-weight: bold;margin-bottom: 10px;">TENET</p>
+      <p style="font-weight: bold;margin-bottom: 10px;">${doc.data().title}</p>
       <div class="deatails">
       ${doc.data().shotstory}
     </div>
+    
       <div class="starrate">
         <ons-icon class="starspace" icon="md-star"></ons-icon>
         <ons-icon class="starspace" icon="md-star"></ons-icon>
         <ons-icon class="starspace" icon="md-star"></ons-icon>
         <ons-icon class="starspace" icon="md-star"></ons-icon>
+
         &nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:x-large;color: green;">85%</b>
+      
     </div>
     </div>
       </div>
@@ -107,15 +118,15 @@ db.collection("movies").get().then((querySnapshot) => {
               
             </div>`
 
-      $("#recomlist").append(resultrecom)
+          $("#recomlist").append(resultrecom)
 
-    }
-  });
-});
-$("#movieList ons-carousel div").click(function () {
-  document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
-})
-})
+        }
+      });
+    });
+    $("#recomlist").click(function () {
+      document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
+    })
+  })
 };
 
 //< ----------------------------------------homepage--------------------------------------------->
@@ -158,6 +169,8 @@ document.addEventListener('init', function (event) {
   var page = event.target;
   if (page.id === 'home') {
     getMovieHome()
+    getMovieHome1()
+
   }
 });
 //<=====================================ล่างhomepage======================================>
@@ -188,6 +201,8 @@ function getMovieHome() {
   $("#movieList ons-carousel div").click(function () {
     document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
   })
+
+
 
   $("#carouselBig ons-carousel-item video").click(function () {
     document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
@@ -222,9 +237,8 @@ function getmoviefromSearch() {
            </div>
         </ons-col>
         <ons-col>
-              <span class="list-item__title">Us</span><br>
-              <span class="list-item__subtitle">Vestibulum congue placerat magna in ornare. In hac habitasse platea dictumst.
-                 Mauris rhoncus iaculis magna, at molestie mauris gravida sagittis...
+              <span class="list-item__title">${doc.data().title}</span><br>
+              <span class="list-item__subtitle">"${doc.data().shotstory}"
                 </span>
                  <p class="rating">Ratings</p>
                         <div class="starrate">
