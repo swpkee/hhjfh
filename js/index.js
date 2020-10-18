@@ -173,8 +173,8 @@ function moviedetial(p) {
     </div>
  
   `
-    $("#moviedetail").append(far);
-    
+        $("#moviedetail").append(far);
+
 
 
 
@@ -525,7 +525,7 @@ $(function () {
 $(function () {
   db.collection("movies").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      const result1 =`
+      const result1 = `
 <ons-carousel-item>
           <video id="videoBG" style="width:100%;height:auto;" autoplay muted loop>
             <source src="/video/mvstr.mp4" type="video/mp4">
@@ -539,8 +539,8 @@ $(function () {
             <source src="/video/ted.mp4" type="video/mp4">
         </ons-carousel-item>
         `
-        $('#carouselBig').append(result1)
-      })
-    });
-  
+      $('#carouselBig').append(result1)
+    })
   });
+
+});

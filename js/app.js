@@ -10,7 +10,7 @@ var next = function () {
 
 ons.ready(function () {
   var carousel = document.addEventListener('postchange', function (event) {
-    console.log('Changed to ' + event.activeIndex)
+
   });
 });
 
