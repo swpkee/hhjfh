@@ -23,24 +23,33 @@ firebase.auth().onAuthStateChanged(function (user) {
     window.location.href = "signin.html";
   }
 });
+$(function () {
+  db.collection("movies").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      if (doc.data().eiei == 1) {
+        const result = `
 
-db.collection("movies").get().then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
-    if (doc.data().eiei == 1) {
-      const result = `
-
-            <div>
+            <div class="ppp" id="${doc.data().title}">
             <ons-carousel-item>
                   <img src="${doc.data().posterURL}" style="width:90%;height:100%;"> 
                   </ons-carousel-item>
               
             </div>`
 
-      $("#gg").append(result)
+        $(".movie_list").append(result)
 
-    }
+      }
+    });
+    $(".ppp").click(function () {
+
+      moviedetial($(this).attr('id'))
+      document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
+    })
   });
+
 });
+
+
 
 //------------------------- auto show ---------------------
 $(function () {
@@ -49,9 +58,9 @@ $(function () {
     querySnapshot.forEach((doc) => {
       if (doc.data().catagory[0] == "Action" && doc.data().rating > 9) {
         const result = `
-      <div class="row" id="recomlist">
+      <div class="row" >
       <div class="col-7 text-center" id="recompic">
-      <img src="${doc.data().posterURL}" style="width: 75%;margin-top: 5px;margin-top: 10px;margin-right: 20px;">
+      <img class="oo" id="${doc.data().title}" src="${doc.data().posterURL}" style="width: 75%;margin-top: 5px;margin-top: 10px;margin-right: 20px;">
     </div>
     <div class="col-5" id="recomdata" style="font-size: 70%;margin-top: 10px;padding-right: 31px;padding-left: 0px;">
       <p style="font-weight: bold;margin-bottom: 10px;">${doc.data().title}</p>
@@ -77,11 +86,41 @@ $(function () {
 
       }
     });
+    $(".oo").click(function () {
+
+      moviedetial($(this).attr('id'))
+      document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
+    })
   });
-  $(".oo").click(function () {
-    document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
-  })
+
 });
+
+function moviedetial(p) {
+  console.log(p);
+  db.collection("movies").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      if (doc.data().title == p) {
+        const far = `  <ons-card>
+      <img src="${doc.data().posterURL}" alt="Onsen UI" style="width: 100%">
+      <div class="title">
+        <h1>${doc.data().title}<h1>
+      </div>
+      <div class="content">
+        <div>
+          ${doc.data().shotstory}
+        </div>
+        <br>
+    </ons-card>`
+        $("#moviedetail").append(far);
+
+
+      }
+
+
+    });
+  });
+
+}
 
 //------------------------- auto show ---------------------
 function getMovieHome1() {
@@ -94,10 +133,10 @@ function getMovieHome1() {
       querySnapshot.forEach((doc) => {
         if (doc.data().catagory[0] == $(this).attr("id") && doc.data().rating > 9) {
 
-//function star ------------------------------------------------------------------------
+          //function star ------------------------------------------------------------------------
 
-          if (doc.data().rating >9) {
-            var rating =`
+          if (doc.data().rating > 9) {
+            var rating = `
             <div class="starrate">
             <ons-icon  icon="fa-star"></ons-icon>
             <ons-icon  icon="fa-star"></ons-icon>
@@ -109,7 +148,7 @@ function getMovieHome1() {
             `
           }
           else if (doc.data().rating > 7 && doc.data().rating < 9) {
-            var rating =`
+            var rating = `
             <div class="starrate">
             <ons-icon  icon="fa-star"></ons-icon>
             <ons-icon  icon="fa-star"></ons-icon>
@@ -121,7 +160,7 @@ function getMovieHome1() {
           }
 
           else if (doc.data().rating > 4 && doc.data().rating < 7) {
-            var rating =`
+            var rating = `
             <div class="starrate">
             <ons-icon  icon="fa-star"></ons-icon>
             <ons-icon  icon="fa-star"></ons-icon>
@@ -133,7 +172,7 @@ function getMovieHome1() {
           }
 
           else if (doc.data().rating > 1 && doc.data().rating < 4) {
-            var rating =`
+            var rating = `
             <div class="starrate">
             <ons-icon  icon="fa-star"></ons-icon>
             <ons-icon  icon="fa-star"></ons-icon>
@@ -142,16 +181,16 @@ function getMovieHome1() {
           }
 
           const resultrecom = `
-      <div class="row" id="recomlist">
-      <div class="col-7 text-center" id="recompic">
+      <div class="row ooo" id="${doc.data().title}">
+      <div class="col-7 text-center" id="${doc.data().title}">
       <img src="${doc.data().posterURL}" style="width: 75%;margin-top: 20px;margin-top: 10px;margin-right: 20px;">
     </div>
-    <div class="col-5" id="recomdata" style="font-size: 70%;margin-top: 10px;padding-right: 31px;padding-left: 0px;">
+    <div class="col-5" id="${doc.data().title}" style="font-size: 70%;margin-top: 10px;padding-right: 31px;padding-left: 0px;">
       <p style="font-weight: bold;margin-bottom: 10px;">${doc.data().title}</p>
       <div class="deatails">
       ${doc.data().shotstory}
     </div>
-          `+rating+`
+          `+ rating + `
     </div>
     </div>
       </div>
@@ -163,10 +202,12 @@ function getMovieHome1() {
 
         }
       });
+      $(".ooo").click(function () {
+        moviedetial($(this).attr('id'))
+        document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
+      })
     });
-    $("#recomlist").click(function () {
-      document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
-    })
+
   })
 };
 
@@ -176,7 +217,7 @@ function getMovieHome1() {
 
 //     var row1 = `
 
-//             <ons-carousel-item>
+//             <ons-carousel-item class"bb" id="${doc.data().title}">
 //             <video id="videoBG" style="width:100%;height:auto;"  autoplay muted loop><source src="${doc.data().posterURL}" type="video/mp4">
 
 //             </ons-carousel-item>
@@ -219,35 +260,40 @@ function getMovieHome() {
   $("#btnCategory button").click(function () {
     $(this).siblings().removeClass('activetype')
     $(this).addClass('activetype');
-    $("#gg").empty();
+    $(".movie_list").empty();
 
     db.collection("movies").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         if (doc.data().catagory[0] == $(this).attr("id")) {
           const result = `
-                <div>
-                   
-                      <img src="${doc.data().posterURL}" style="width:90%;height:100%;"> 
-                  
-                </div>`
+          
+          <div class="pppp" id="${doc.data().title}">
+          <ons-carousel-item>
+                <img src="${doc.data().posterURL}" style="width:90%;height:100%;"> 
+                </ons-carousel-item>
+            
+          </div>`
 
-          $("#gg").append(result)
+
+          $(".movie_list").append(result)
 
         }
 
 
       });
+      $(".pppp").click(function () {
+        moviedetial($(this).attr('id'))
+        document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
+      })
     });
   });
-  $("#movieList ons-carousel div").click(function () {
-    document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
-  })
 
 
 
-  $("#carouselBig ons-carousel-item video").click(function () {
-    document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
-  })
+
+  // $("#carouselBig ons-carousel-item video").click(function () {
+  //   document.querySelector("#myNavigator_home").pushPage('view/moviedetails.html');
+  // })
 };
 
 
@@ -272,7 +318,7 @@ function getmoviefromSearch() {
       console.log(newtitleMovie);
       if (newtitleMovie.toLowerCase().indexOf(newsearchText.toLowerCase()) != -1) {
         const eiei = `
-        <ons-row class="rowmagin se"> 
+        <ons-row class="rowmagin se" id="${doc.data().title}"> 
         <ons-col>
         <img src="${doc.data().posterURL}" style="width:90%;height:100%;">
            </div>
@@ -295,7 +341,7 @@ function getmoviefromSearch() {
       }
     });
     $(".se").click(function () {
-
+      moviedetial($(this).attr('id'))
       document.querySelector("#myNavigator_search").pushPage('view/moviedetails.html');
     })
   });
