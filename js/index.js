@@ -153,10 +153,10 @@ function moviedetial(p) {
     preload="auto"
     width="640"
     height="264"
-    poster="MY_VIDEO_POSTER.jpg"
+    poster="${doc.data().posterURL}"
     data-setup="{}"style="
     height: 250px;">
-    <source src="/video/mvhw.mp4" type="video/mp4" />
+    <source src="${doc.data().vedio}" type="video/mp4" />
     </video>
     
       <div class="row ooo" id="${doc.data().title}">
